@@ -1,4 +1,4 @@
-/* "Hello, wolrd!" C version. */
+/* "Hello, world!" C version. */
 
 #include <stdlib.h>
 #include <unistd.h>
