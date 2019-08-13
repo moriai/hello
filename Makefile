@@ -1,4 +1,4 @@
-TARGETS = c nasm $(CARGO_TARGETS)
+TARGETS = c nasm swift $(CARGO_TARGETS)
 CARGO_TARGETS = rust rust-dynamic rust-static
 MAKE = make
 
