@@ -14,7 +14,6 @@
     "disable-redzone": true,
     "pre-link-args": {
       "gcc": [
-        "-v",
         "-Wl,--as-needed",
         "-Wl,-z,noexecstack",
         "-Wl,--gc-sections",
