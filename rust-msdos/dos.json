@@ -2,16 +2,17 @@
   "arch": "x86",
   "cpu": "i386",
   "data-layout": "e-m:e-p:32:32-f64:32:64-f80:32-n8:16:32-S128",
+  "disable-redzone": true,
   "dynamic-linking": false,
-  "executables": true,
   "exe-suffix": ".com",
-  "linker-flavor": "gcc",
+  "executables": true,
   "linker": "i386-elf-gcc",
+  "linker-flavor": "gcc",
   "linker-is-gnu": true,
   "llvm-target": "i386-unknown-none-code16",
   "max-atomic-width": 64,
+  "os": "none",
   "position-independent-executables": false,
-  "disable-redzone": true,
   "pre-link-args": {
     "gcc": [
       "-Wl,--as-needed",
@@ -32,6 +33,5 @@
   "target-c-int-width": "32",
   "target-endian": "little",
   "target-pointer-width": "32",
-  "os": "none",
   "vendor": "unknown"
 }
