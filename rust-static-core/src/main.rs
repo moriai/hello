@@ -1,6 +1,5 @@
 // "Hello, world!" Rust no-std version.
 
-#![feature(lang_items)]
 #![no_std]
 #![no_main]
 
@@ -9,13 +8,7 @@ use syscall::nr::*;
 use core::panic::PanicInfo;
 use core::fmt::Write;
 
-#[allow(unused_imports)]
-use rlibc::*;
-
 const SYSCALL_CLASS_UNIX: usize = 0x2000000;
-
-#[lang = "eh_personality"] #[no_mangle] pub extern fn rust_eh_personality() {}
-#[allow(non_snake_case)] #[no_mangle] pub extern fn _Unwind_Resume() { loop {} }
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
