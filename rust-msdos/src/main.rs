@@ -4,6 +4,7 @@
 
 use rusty_asm::rusty_asm;
 use core::panic::PanicInfo;
+use libc_print;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
