@@ -1,0 +1,48 @@
+{
+  "arch": "x86",
+  "cpu": "pentium",
+  "crt-static-default": true,
+  "crt-static-respected": true,
+  "data-layout": "e-m:e-p:32:32-f64:32:64-f80:32-n8:16:32-S128",
+  "dynamic-linking": true,
+  "eliminate-frame-pointer": false,
+  "env": "musl",
+  "executables": true,
+  "has-elf-tls": true,
+  "has-rpath": true,
+  "is-builtin": true,
+  "linker-flavor": "gcc",
+  "linker-is-gnu": true,
+  "llvm-target": "i586-unknown-linux-musl",
+  "max-atomic-width": 64,
+  "os": "linux",
+  "position-independent-executables": true,
+  "post-link-objects-crt": [
+    "crtn.o"
+  ],
+  "pre-link-args": {
+    "gcc": [
+      "-Wl,--as-needed",
+      "-Wl,-z,noexecstack",
+      "-Wl,--eh-frame-hdr",
+      "-m32",
+      "-Wl,-melf_i386"
+    ]
+  },
+  "pre-link-args-crt": {
+    "gcc": [
+      "-nostdlib"
+    ]
+  },
+  "pre-link-objects-exe-crt": [
+    "crt1.o",
+    "crti.o"
+  ],
+  "relro-level": "full",
+  "stack-probes": true,
+  "target-c-int-width": "32",
+  "target-endian": "little",
+  "target-family": "unix",
+  "target-pointer-width": "32",
+  "vendor": "unknown"
+}
