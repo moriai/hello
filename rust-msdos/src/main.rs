@@ -20,15 +20,16 @@ fn write(fd: usize, buf: *const u8, len: usize) {
             clobber("al");
             asm("volatile", "intel") {
                 "mov ah, 40h
-                int 21h"
+                 int 21h"
             }
         }
     }
 }
 
-fn exit() -> ! {
+fn exit(status: usize) -> ! {
     unsafe {
-        rusty_asm! { 
+        rusty_asm! {
+            let status: in("al") = status as u8;
             asm("volatile", "intel") {
                 "mov ah, 4ch
                  int 21h"
@@ -45,5 +46,5 @@ pub extern "C" fn _start() -> ! {
     let len = msg.len();
 
     write(1, buf, len);
-    exit();
+    exit(0);
 }
