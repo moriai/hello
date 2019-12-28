@@ -2,4 +2,4 @@
 target = "dos.json"
 
 [target.dos]
-runner = "hvdos"
+runner = "hvdos-rs"
