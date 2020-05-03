@@ -6,6 +6,7 @@
   "dynamic-linking": false,
   "exe-suffix": ".com",
   "executables": true,
+  "features": "+16bit-mode,-mmx,-sse,+soft-float",
   "linker": "x86_64-elf-gcc",
   "linker-flavor": "gcc",
   "linker-is-gnu": true,
