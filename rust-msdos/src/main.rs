@@ -1,8 +1,7 @@
-#![feature(proc_macro_hygiene, asm)]
+#![feature(proc_macro_hygiene, llvm_asm)]
 #![no_main]
 #![no_std]
 
-use rusty_asm::rusty_asm;
 use core::panic::PanicInfo;
 
 #[panic_handler]
@@ -12,29 +11,20 @@ fn panic(_info: &PanicInfo) -> ! {
 
 fn write(fd: usize, buf: *const u8, len: usize) {
     unsafe {
-        rusty_asm! {
-            let buf: in("{dx}") = buf;
-            let len: in("{cx}") = len;
-            let fd: in("{bx}") = fd;
-            clobber("ah");
-            clobber("al");
-            asm("volatile", "intel") {
-                "mov ah, 40h
-                 int 21h"
-            }
-        }
+        llvm_asm!("
+            mov ah, 40h
+            int 21h"
+            : : "{dx}"(buf), "{cx}"(len), "{bx}"(fd) : "al", "ah" : "volatile", "intel");
     }
 }
 
 fn exit(status: usize) -> ! {
     unsafe {
-        rusty_asm! {
-            let status: in("al") = status as u8;
-            asm("volatile", "intel") {
-                "mov ah, 4ch
-                 int 21h"
-            }
-        }
+        let status = status as u8;
+        llvm_asm!("
+            mov ah, 4ch
+            int 21h"
+            : : "al"(status) : : "volatile", "intel");
     }
     loop {}
 }
