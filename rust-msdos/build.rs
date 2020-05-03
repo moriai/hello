@@ -4,7 +4,7 @@ use std::process::Command;
 fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
 
-    Command::new("i386-elf-gcc")
+    Command::new("x86_64-elf-gcc")
         .args(&["src/startup.c", "-c", "-march=i386", "-m16", "-ffreestanding", "-fno-pie", "-o"])
         .arg(&format!("{}/startup.o", out_dir))
         .status().unwrap();
