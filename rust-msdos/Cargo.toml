@@ -1,13 +1,11 @@
 [package]
 name = "hello"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Satoshi Moriai <satoshi.moriai@gmail.com>"]
 edition = "2018"
 build = "build.rs"
 
 [dependencies]
-#rusty-asm = "0.2"
-bitflags = "1.0"
 
 [profile.dev]
 panic = "abort"
