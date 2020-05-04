@@ -6,7 +6,7 @@
   "dynamic-linking": false,
   "exe-suffix": ".com",
   "executables": true,
-  "features": "+16bit-mode,-mmx,-sse,+soft-float",
+  "features": "-mmx,-sse,+soft-float",
   "linker": "x86_64-elf-gcc",
   "linker-flavor": "gcc",
   "linker-is-gnu": true,
@@ -31,7 +31,8 @@
   "pre-link-objects-exe-crt": [
     "startup.o"
   ],
-  "relro-level": "full",
+  "relocation-model": "static",
+  "relro-level": "off",
   "target-c-int-width": "32",
   "target-endian": "little",
   "target-pointer-width": "32",
