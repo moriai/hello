@@ -6,5 +6,5 @@ The original repository is https://github.com/Serentty/rusty-dos.
 ## Building
 
 ```
-RUSTFLAGS="-C opt-level=s -C relocation-model=static" cargo xbuild --release
+cargo xbuild --release
 ```
