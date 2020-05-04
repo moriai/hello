@@ -9,6 +9,8 @@ build = "build.rs"
 
 [profile.dev]
 panic = "abort"
+opt-level = 1
 
 [profile.release]
 panic = "abort"
+opt-level = "s" #or "z"
