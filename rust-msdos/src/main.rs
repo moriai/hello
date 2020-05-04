@@ -1,4 +1,4 @@
-#![feature(proc_macro_hygiene, llvm_asm)]
+#![feature(llvm_asm)]
 #![no_main]
 #![no_std]
 
