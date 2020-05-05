@@ -29,6 +29,7 @@ fn exit(status: usize) -> ! {
     loop {}
 }
 
+#[link_section=".startup"]
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
     let msg = "Hello, world!\r\n";

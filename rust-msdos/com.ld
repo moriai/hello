@@ -1,10 +1,11 @@
 OUTPUT_FORMAT(binary)
-STARTUP(startup.o)
+ENTRY(_startup)
 SECTIONS
 {
     . = 0x0100;
     .text :
     {
+        *(.startup);
         *(.text);
     }
     .data :
