@@ -1,0 +1,9 @@
+[build]
+target = "wasm32-wasi"
+
+[profile.release]
+lto = true
+opt-level = "s" #or "z"
+
+[target.wasm32-wasi]
+runner = "wasmtime"

@@ -1,5 +1,5 @@
 TARGETS = c nasm swift $(CARGO_TARGETS)
-CARGO_TARGETS = rust rust-dynamic rust-static rust-static-core rust-msdos
+CARGO_TARGETS = rust rust-dynamic rust-static rust-static-core rust-msdos rust-wasi
 MAKE = make
 
 .PHONY: all clean $(TARGETS)
