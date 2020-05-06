@@ -6,3 +6,4 @@ Cargo.lock
 *.stripped
 hello
 */work/
+*/pkg/
