@@ -3,6 +3,7 @@ name = "hello"
 version = "0.2.0"
 authors = ["Satoshi Moriai <satoshi.moriai@gmail.com>"]
 edition = "2018"
+default-run = "hello"
 
 [dependencies]
 
@@ -11,3 +12,7 @@ opt-level = 1
 
 [profile.release]
 opt-level = "s" #or "z"
+
+[[bin]]
+name = "idiv"
+path = "src/idiv.rs"
