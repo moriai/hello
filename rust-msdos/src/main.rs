@@ -24,7 +24,7 @@ fn exit(status: usize) -> ! {
         llvm_asm!("
             mov ah, 4ch
             int 21h"
-            : : "al"(status) : : "volatile", "intel");
+            : : "{al}"(status) : : "volatile", "intel");
     }
     loop {}
 }
