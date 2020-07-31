@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -fr target/{.rustc_info.json,dos,release,sysroot}
