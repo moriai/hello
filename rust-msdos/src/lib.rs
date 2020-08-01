@@ -1,15 +1,14 @@
 #![feature(llvm_asm)]
-#![no_main]
 #![no_std]
 
 use core::panic::PanicInfo;
 
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
+pub fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
 
-fn write(fd: usize, buf: *const u8, len: usize) {
+pub fn write(fd: usize, buf: *const u8, len: usize) {
     unsafe {
         llvm_asm!("
             mov ah, 40h
@@ -18,7 +17,7 @@ fn write(fd: usize, buf: *const u8, len: usize) {
     }
 }
 
-fn exit(status: usize) -> ! {
+pub fn exit(status: usize) -> ! {
     unsafe {
         let status = status as u8;
         llvm_asm!("
@@ -27,15 +26,4 @@ fn exit(status: usize) -> ! {
             : : "{al}"(status) : : "volatile", "intel");
     }
     loop {}
-}
-
-#[link_section=".startup"]
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
-    let msg = "Hello, world!\r\n";
-    let buf = msg.as_ptr();
-    let len = msg.len();
-
-    write(1, buf, len);
-    exit(0);
 }

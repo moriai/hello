@@ -1,11 +1,12 @@
 [package]
-name = "hello"
-version = "0.2.0"
+name = "dos"
+version = "0.3.0"
 authors = ["Satoshi Moriai <satoshi.moriai@gmail.com>"]
 edition = "2018"
 default-run = "hello"
 
 [dependencies]
+heapless = "0.5.5"
 
 [profile.dev]
 opt-level = 1
@@ -15,4 +16,12 @@ opt-level = "s" #or "z"
 
 [[bin]]
 name = "idiv"
-path = "src/idiv.rs"
+#path = "src/idiv.rs"
+
+[[bin]]
+name = "heapless"
+#path = "src/heapless.rs"
+
+[[bin]]
+name = "hello"
+#path = "src/hello.rs"

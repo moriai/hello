@@ -2,23 +2,7 @@
 #![no_main]
 #![no_std]
 
-use core::panic::PanicInfo;
-
-#[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
-    loop {}
-}
-
-fn exit(status: usize) -> ! {
-    unsafe {
-        let status = status as u8;
-        llvm_asm!("
-            mov ah, 4ch
-            int 21h"
-            : : "{al}"(status) : : "volatile", "intel");
-    }
-    loop {}
-}
+use dos::*;
 
 fn idiv(x: i16, y: i8) -> i8 {
     unsafe {
