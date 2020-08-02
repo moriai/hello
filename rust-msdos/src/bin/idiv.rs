@@ -4,6 +4,7 @@
 
 use dos::*;
 
+#[inline(always)]
 fn idiv(x: i16, y: i8) -> i8 {
     unsafe {
         let r: i8;
@@ -18,5 +19,5 @@ fn idiv(x: i16, y: i8) -> i8 {
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
     let out = idiv(27, 3);
-    exit(out as usize);
+    exit(out as u8);
 }

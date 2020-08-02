@@ -16,12 +16,12 @@ opt-level = "s" #or "z"
 
 [[bin]]
 name = "idiv"
-#path = "src/idiv.rs"
-
-[[bin]]
-name = "heapless"
-#path = "src/heapless.rs"
 
 [[bin]]
 name = "hello"
-#path = "src/hello.rs"
+
+[[bin]]
+name = "hello1"
+
+[[bin]]
+name = "hello2"
