@@ -31,8 +31,7 @@ pub fn write(fd: u16, buf: *const u8, len: u16) -> (u16, u16) {
 pub fn abort() -> ! {
     unsafe {
         llvm_asm!("
-            mov ah, 0h
-            int 21h"
+            int 20h"
             : : : : "volatile", "intel");
     }
     loop {}
