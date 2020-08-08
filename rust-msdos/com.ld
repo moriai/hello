@@ -11,8 +11,8 @@ SECTIONS
     .data :
     {
         *(.data);
-        *(.bss);
         *(.rodata);
+        *(.bss);
     }
     _heap = ALIGN(4);
 }
