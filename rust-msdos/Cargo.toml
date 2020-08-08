@@ -6,7 +6,11 @@ edition = "2018"
 default-run = "hello"
 
 [dependencies]
-heapless = "0.5.5"
+
+[dependencies.heapless]
+version = "0.5.5"
+default-features = false
+features = ["ufmt-impl"]
 
 [profile.dev]
 opt-level = 1
@@ -25,3 +29,6 @@ name = "hello1"
 
 [[bin]]
 name = "hello2"
+
+[[bin]]
+name = "hello3"
