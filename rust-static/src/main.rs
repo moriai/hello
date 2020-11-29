@@ -3,11 +3,10 @@
 #![no_std]
 #![no_main]
 
-use syscall::*;
-use syscall::nr::*;
-use core::panic::PanicInfo;
+use sc::{syscall1, syscall3};
+use sc::nr::*;
 
-const SYSCALL_CLASS_UNIX: usize = 0x2000000;
+use core::panic::PanicInfo;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
@@ -16,13 +15,13 @@ fn panic(_info: &PanicInfo) -> ! {
 
 fn write(fd: usize, buf: *const u8, len: usize) {
     unsafe {
-        syscall3(SYSCALL_CLASS_UNIX | WRITE, fd, buf as usize , len);
+        syscall3(WRITE, fd, buf as usize , len);
     }
 }
 
 fn exit(status: usize) -> ! {
     unsafe {
-        syscall1(SYSCALL_CLASS_UNIX | EXIT, status);
+        syscall1(EXIT, status);
     }
     loop {}
 }
