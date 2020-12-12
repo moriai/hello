@@ -22,11 +22,9 @@
       "-Wl,--as-needed",
       "-Wl,-z,noexecstack",
       "-Wl,--eh-frame-hdr",
-      "-m64"
-    ]
-  },
-  "pre-link-args-crt": {
-    "gcc": [
+      "-m64",
+      "-e__start",
+      "-static",
       "-nostdlib"
     ]
   },
