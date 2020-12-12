@@ -1,2 +1,2 @@
 [build]
-target = "x86_64-apple-darwin-static.json"
+target = "x86_64-apple-darwin-nostd.json"
