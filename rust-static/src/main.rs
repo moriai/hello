@@ -3,9 +3,6 @@
 #![no_std]
 #![no_main]
 
-use sc::{syscall1, syscall3};
-use sc::nr::*;
-
 use core::panic::PanicInfo;
 
 #[panic_handler]
@@ -13,15 +10,17 @@ fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
 
+use sc::syscall;
+
 fn write(fd: usize, buf: *const u8, len: usize) {
     unsafe {
-        syscall3(WRITE, fd, buf as usize , len);
+        syscall!(WRITE, fd, buf as usize, len);
     }
 }
 
 fn exit(status: usize) -> ! {
     unsafe {
-        syscall1(EXIT, status);
+        syscall!(EXIT, status);
     }
     loop {}
 }
