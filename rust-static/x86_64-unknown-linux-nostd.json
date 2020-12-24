@@ -23,7 +23,7 @@
       "-Wl,-z,noexecstack",
       "-Wl,--eh-frame-hdr",
       "-m64",
-      "-e__start",
+      "-e_start",
       "-static",
       "-nostdlib"
     ]
