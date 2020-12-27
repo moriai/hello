@@ -17,7 +17,7 @@ rustflags = ["-C", "linker=x86_64-elf-gcc"]
 
 
 + Other targets (cross building)
-    - Tested for
+    - Tested on x86_64-apple-darwin for
         - x86_64-apple-darwin-nostd.json
         - x86_64-unknown-linux-nostd.json
 
