@@ -8,13 +8,13 @@
   "dwarf-version": 2,
   "dynamic-linking": false,
   "eh-frame-header": false,
-  "eliminate-frame-pointer": false,
   "emit-debug-gdb-scripts": false,
   "executables": true,
+  "frame-pointer": "always",
   "function-sections": false,
   "has-elf-tls": true,
   "has-rpath": true,
-  "is-builtin": true,
+  "is-builtin": false,
   "is-like-osx": true,
   "link-env": [
     "ZERO_AR_DATE=1"
@@ -22,6 +22,7 @@
   "link-env-remove": [
     "IPHONEOS_DEPLOYMENT_TARGET"
   ],
+  "linker-is-gnu": false,
   "llvm-target": "x86_64-apple-macosx10.7.0",
   "max-atomic-width": 128,
   "os": "macos",
@@ -35,10 +36,18 @@
       "-nostartfiles"
     ]
   },
-  "stack-probes": true,
-  "target-c-int-width": "32",
-  "target-endian": "little",
-  "target-family": "unix",
+  "split-debuginfo": "packed",
+  "stack-probes": {
+    "kind": "call"
+  },
+  "supported-sanitizers": [
+    "address",
+    "leak",
+    "thread"
+  ],
+  "target-family": [
+    "unix"
+  ],
   "target-mcount": "\u0001mcount",
   "target-pointer-width": "64",
   "vendor": "apple"
