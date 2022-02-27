@@ -13,7 +13,7 @@ $ cargo build [--target target-name] [--release]
 On a macOS host:
 ```toml:~/.cargo/config.toml
 [target.x86_64-unknown-linux-gnu]
-rustflags = ["-C", "linker=x86_64-elf-gcc"]
+linker = "x86_64-elf-gcc"
 ```
 
 ## Other targets (cross building)
@@ -29,7 +29,7 @@ $ cargo build -Z build-std=core,alloc --target target-name.json [--release]
 On a macOS host:
 ```toml:~/.cargo/config.toml
 [target.x86_64-unknown-linux-nostd]
-rustflags = ["-C", "linker=x86_64-elf-gcc"]
+linker = "x86_64-elf-gcc"
 ```
 
 See [cargo-xbuild README.md](https://github.com/rust-osdev/cargo-xbuild/blob/master/README.md).
