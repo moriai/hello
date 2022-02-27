@@ -12,7 +12,6 @@
   "executables": true,
   "frame-pointer": "always",
   "function-sections": false,
-  "has-elf-tls": true,
   "has-rpath": true,
   "is-builtin": true,
   "is-like-osx": true,
