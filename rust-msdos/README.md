@@ -6,5 +6,9 @@ The original repository is https://github.com/Serentty/rusty-dos.
 ## Building
 
 ```
-cargo xbuild --release
+cargo build --release
+```
+or
+```
+RUSTFLAGS='-C linker=gcc' cargo build --release
 ```
