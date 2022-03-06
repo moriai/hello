@@ -8,4 +8,5 @@ build-std = ["core"]
 build-std-features = ["compiler-builtins-mem"]
 
 [target.dos]
+linker = "x86_64-elf-gcc"
 runner = "hvdos"

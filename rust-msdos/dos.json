@@ -7,7 +7,6 @@
   "exe-suffix": ".com",
   "executables": true,
   "features": "-mmx,-sse,+soft-float",
-  "linker": "x86_64-elf-gcc",
   "linker-flavor": "gcc",
   "linker-is-gnu": true,
   "llvm-target": "i386-unknown-none-code16",
