@@ -1,0 +1,32 @@
+{
+  "arch": "x86",
+  "cpu": "i386",
+  "data-layout": "e-m:e-p:32:32-f64:32:64-f80:32-n8:16:32-S128",
+  "disable-redzone": true,
+  "dynamic-linking": false,
+  "eh-frame-header": false,
+  "exe-suffix": ".com",
+  "executables": true,
+  "features": "-mmx,-sse,+soft-float",
+  "has-rpath": true,
+  "is-builtin": false,
+  "linker": "rust-lld",
+  "linker-flavor": "ld.lld",
+  "linker-is-gnu": false,
+  "llvm-target": "i386-unknown-none-code16",
+  "max-atomic-width": 32,
+  "os": "none",
+  "panic-strategy": "abort",
+  "position-independent-executables": false,
+  "pre-link-args": {
+    "ld.lld": [
+      "-Tcom-lld.ld"
+    ]
+  },
+  "relocation-model": "static",
+  "relro-level": "off",
+  "target-c-int-width": "32",
+  "target-endian": "little",
+  "target-pointer-width": "32",
+  "vendor": "unknown"
+}
