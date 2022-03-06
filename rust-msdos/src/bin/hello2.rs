@@ -1,8 +1,8 @@
-#![feature(llvm_asm)]
 #![no_main]
 #![no_std]
 
 use dos::*;
+use core::arch::asm;
 use core::result::Result;
 
 #[inline(always)]
@@ -10,16 +10,18 @@ fn write(fd: u16, buf: *const u8, len: u16) -> Result<u16, u16> {
     unsafe {
         let cnt: u16;
         let stat: u16;
-        
-        llvm_asm!("
-            mov ah, 40h
-            int 21h
-            pushf
-            pop dx"
-            : "={ax}"(cnt), "={dx}"(stat)
-            : "{dx}"(buf), "{cx}"(len), "{bx}"(fd)
-            :
-            : "volatile", "intel");
+
+        asm!(
+            "mov ah, 0x40",
+            "int 0x21",
+            "pushf",
+            "pop dx",
+            in("dx") buf,
+            in("cx") len,
+            in("bx") fd,
+            out("ax") cnt,
+            lateout("dx") stat
+        );
         if stat & 0x01 != 0 {
             Err(cnt)
         } else {

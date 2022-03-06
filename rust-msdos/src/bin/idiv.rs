@@ -1,16 +1,19 @@
-#![feature(llvm_asm)]
 #![no_main]
 #![no_std]
 
+use core::arch::asm;
 use dos::*;
 
 #[inline(always)]
 fn idiv(x: i16, y: i8) -> i8 {
     unsafe {
         let r: i8;
-        llvm_asm!(
-            "idiv cl"
-            : "={al}"(r): "{ax}"(x), "{cl}"(y) : : "volatile", "intel");
+        asm!(
+            "idiv cl",
+            in("ax") x,
+            in("cl") y,
+            lateout("al") r
+        );
         r
     }
 }

@@ -1,6 +1,6 @@
-#![feature(llvm_asm)]
 #![no_std]
 
+use core::arch::asm;
 use core::panic::PanicInfo;
 
 #[panic_handler]
@@ -14,15 +14,17 @@ pub fn write(fd: u16, buf: *const u8, len: u16) -> (u16, u16) {
         let result: u16;
         let eflags: u16;
 
-        llvm_asm!("
-            mov ah, 40h
-            int 21h
-            pushf
-            pop dx"
-            : "={ax}"(result), "={dx}"(eflags)
-            : "{dx}"(buf), "{cx}"(len), "{bx}"(fd)
-            :
-            : "volatile", "intel");
+        asm!(
+            "mov ah, 0x40",
+            "int 0x21",
+            "pushf",
+            "pop dx",
+            in("dx") buf,
+            in("cx") len,
+            in("bx") fd,
+            out("ax") result,
+            lateout("dx") eflags
+        );
         (result, eflags)
     }
 }
@@ -30,9 +32,7 @@ pub fn write(fd: u16, buf: *const u8, len: u16) -> (u16, u16) {
 #[inline(always)]
 pub fn abort() -> ! {
     unsafe {
-        llvm_asm!("
-            int 20h"
-            : : : : "volatile", "intel");
+        asm!("int 0x20");
     }
     loop {}
 }
@@ -40,10 +40,11 @@ pub fn abort() -> ! {
 #[inline(always)]
 pub fn exit(status: u8) -> ! {
     unsafe {
-        llvm_asm!("
-            mov ah, 4ch
-            int 21h"
-            : : "{al}"(status) : : "volatile", "intel");
+        asm!(
+            "mov ah, 0x4c",
+            "int 0x21",
+            in("al") status
+        );
     }
     loop {}
 }
