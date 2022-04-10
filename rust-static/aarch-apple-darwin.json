@@ -1,0 +1,48 @@
+{
+  "abi-return-struct-as-int": true,
+  "arch": "aarch64",
+  "archive-format": "darwin",
+  "cpu": "apple-a14",
+  "data-layout": "e-m:o-i64:64-i128:128-n32:64-S128",
+  "dll-suffix": ".dylib",
+  "dwarf-version": 2,
+  "dynamic-linking": true,
+  "eh-frame-header": false,
+  "emit-debug-gdb-scripts": false,
+  "executables": true,
+  "frame-pointer": "non-leaf",
+  "function-sections": false,
+  "has-rpath": true,
+  "has-thread-local": true,
+  "is-builtin": true,
+  "is-like-osx": true,
+  "link-env": [
+    "ZERO_AR_DATE=1"
+  ],
+  "link-env-remove": [
+    "IPHONEOS_DEPLOYMENT_TARGET"
+  ],
+  "linker-is-gnu": false,
+  "lld-flavor": "darwin",
+  "llvm-target": "arm64-apple-macosx11.0.0",
+  "max-atomic-width": 128,
+  "os": "macos",
+  "pre-link-args": {
+    "gcc": [
+      "-arch",
+      "arm64"
+    ]
+  },
+  "split-debuginfo": "packed",
+  "supported-sanitizers": [
+    "address",
+    "cfi",
+    "thread"
+  ],
+  "target-family": [
+    "unix"
+  ],
+  "target-mcount": "\u0001mcount",
+  "target-pointer-width": "64",
+  "vendor": "apple"
+}
