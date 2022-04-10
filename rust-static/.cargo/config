@@ -1,5 +1,8 @@
 [target.x86_64-apple-darwin]
 rustflags = ["-C", "link-args=-e __start -static -nostartfiles"]
 
+[target.aarch64-apple-darwin]
+rustflags = ["-C", "link-args=-e __start -lSystem"]
+
 [target.x86_64-unknown-linux-gnu]
 rustflags = ["-C", "link-args=-e _start -static -nostdlib"]
