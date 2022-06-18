@@ -8,7 +8,7 @@ default-run = "hello"
 [dependencies]
 
 [dependencies.heapless]
-version = "0.5.5"
+version = "0.7.14"
 default-features = false
 features = ["ufmt-impl"]
 
