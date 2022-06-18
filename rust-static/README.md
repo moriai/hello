@@ -5,6 +5,7 @@
 Tested on
 + x86_64-apple-darwin
 + x86_64-unknown-linux-gnu
++ aarch64-apple-darwin (dynamically linked to libSystem.dylib, because aarch64 static binaries are disallowed to exec except on development kernels.)
 
 ```console
 $ cargo build [--target target-name] [--release]
