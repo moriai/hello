@@ -6,3 +6,6 @@ rustflags = ["-C", "link-args=-e __start -lSystem"]
 
 [target.x86_64-unknown-linux-gnu]
 rustflags = ["-C", "link-args=-e _start -static -nostdlib"]
+
+[target.aarch64-unknown-linux-gnu]
+rustflags = ["-C", "link-args=-e _start -static -nostdlib"]
