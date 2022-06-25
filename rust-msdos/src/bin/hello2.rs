@@ -8,8 +8,8 @@ use core::result::Result;
 #[inline(always)]
 fn write(fd: u16, buf: *const u8, len: u16) -> Result<u16, u16> {
     unsafe {
-        let cnt: u16;
-        let stat: u16;
+        let status: u16;
+        let flags: u16;
 
         asm!(
             "mov ah, 0x40",
@@ -19,13 +19,13 @@ fn write(fd: u16, buf: *const u8, len: u16) -> Result<u16, u16> {
             in("dx") buf,
             in("cx") len,
             in("bx") fd,
-            out("ax") cnt,
-            lateout("dx") stat
+            out("ax") status,
+            lateout("dx") flags
         );
-        if stat & 0x01 != 0 {
-            Err(cnt)
+        if flags & 0x01 != 0 {
+            Err(status)
         } else {
-            Ok(cnt)
+            Ok(status)
         }
     }
 }
