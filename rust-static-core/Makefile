@@ -1,6 +1,12 @@
-TARGET_ARCH=x86_64-apple-darwin-static
-TARGETS =	target/$(TARGET_ARCH)/release/hello \
-			target/$(TARGET_ARCH)/release/hello.stripped
+ARCH ?= $(shell ../arch.sh)
+UNAME ?= $(shell uname)
+ifeq ($(UNAME),Darwin)
+TARGET_ARCH = $(ARCH)-apple-darwin-nostd
+else
+TARGET_ARCH = $(ARCH)-unknown-linux-nostd
+endif
+
+TARGETS = target/$(TARGET_ARCH)/release/hello target/$(TARGET_ARCH)/release/hello.stripped
 CARGO = cargo
 SIZE = ../size.pl
 
@@ -12,7 +18,7 @@ measure: $(TARGETS)
 	@$(SIZE) $^
 
 target/$(TARGET_ARCH)/release/hello:
-	$(CARGO) xbuild --release
+	$(CARGO) build --release --target=$(TARGET_ARCH).json
 
 target/$(TARGET_ARCH)/release/hello.stripped: target/$(TARGET_ARCH)/release/hello
 	strip -o $@ $^
