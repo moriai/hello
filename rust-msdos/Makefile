@@ -10,7 +10,7 @@ measure: $(TARGETS)
 	@$(SIZE) $^
 
 target/dos/release/hello.com:
-	$(CARGO) xbuild --release
+	$(CARGO) build --release
 
 clean:
 	$(CARGO) clean

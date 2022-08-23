@@ -1,7 +1,6 @@
 ARCH ?= $(shell ./arch.sh)
 TARGETS = c c-stdio nasm swift $(CARGO_TARGETS)
-CARGO_TARGETS = rust rust-dynamic rust-static rust-static-core rust-wasi rust-wasm \
-		$(CARGO_TARGET_$(ARCH))
+CARGO_TARGETS = rust rust-dynamic rust-static rust-static-core rust-wasi rust-wasm $(CARGO_TARGETS_$(ARCH))
 CARGO_TARGETS_x86_64 = rust-msdos
 MAKE = make
 
